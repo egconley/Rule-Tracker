@@ -7,8 +7,23 @@
 </head>
 <body>
 <main>
-    <h1>Hello World!</h1>
-    <h2 th:text="${data}"></h2>
+    <h1>Auth0 Rule Tracker</h1>
+    <div class="card-block">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>App</th>
+                <th>Rules</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="rule : ${data}">
+                <td th:text="${rule.key}"></td>
+                <td th:text="${rule.value}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
 </main>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
