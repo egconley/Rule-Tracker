@@ -17,9 +17,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="rule : ${data}">
-                <td th:text="${rule.key}"></td>
-                <td th:text="${rule.value}"></td>
+            <tr th:each="app : ${data}">
+                <td th:text="${app.key}"></td>
+                <td>
+                    <ul th:each="rule : ${app.value}"><li th:text="${rule}"></li></ul>
+                </td>
             </tr>
             </tbody>
         </table>
