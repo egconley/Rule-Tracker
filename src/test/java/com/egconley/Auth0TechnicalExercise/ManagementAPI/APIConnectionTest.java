@@ -51,6 +51,8 @@ class APIConnectionTest {
 
     @Test
     void getAPIData() {
+        assertEquals(200, clientResponse.getStatus());
+        assertEquals(200, rulesResponse.getStatus());
     }
 
     @Test

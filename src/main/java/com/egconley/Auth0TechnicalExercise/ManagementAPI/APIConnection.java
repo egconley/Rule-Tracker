@@ -4,8 +4,9 @@ import com.egconley.Auth0TechnicalExercise.models.Tenant;
 import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class APIConnection {
 
     public static HttpResponse<String> getAPIData(Tenant tenant, String endpoint) {
@@ -20,8 +21,8 @@ public class APIConnection {
             // set request body content
             StringBuilder builder = new StringBuilder();
             // TODO: App User: hard code in client_id and client_secret values
-            builder.append("{\"client_id\":\"").append(System.getenv("CLIENT_ID"))
-                    .append("\",\"client_secret\":\"").append(System.getenv("CLIENT_SECRET"))
+            builder.append("{\"client_id\":\"").append("")
+                    .append("\",\"client_secret\":\"").append("")
                     .append("\",\"audience\":\"").append(audience)
                     .append("\",\"grant_type\":\"client_credentials\"}");
             String bodyContent = builder.toString();
@@ -41,7 +42,7 @@ public class APIConnection {
                     .header("authorization", tokeTypeAndAccessToken)
                     .asString();
 
-        } catch (UnirestException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return apiResponse;

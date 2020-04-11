@@ -1,6 +1,7 @@
 package com.egconley.Auth0TechnicalExercise;
 
 import com.egconley.Auth0TechnicalExercise.models.AllClientRules;
+import com.egconley.Auth0TechnicalExercise.models.Tenant;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -16,7 +17,7 @@ public class Auth0TechnicalExerciseApplication {
 		String tenantName = "dev-s4sen828";
 		List<String> tenantNames = new LinkedList<>();
 		tenantNames.add(tenantName);
-
+		
 		HashMap<String, List<String>> result = AllClientRules.getAllClientRules(tenantNames);
 		System.out.println("HOORAY!!!" + result.keySet().toString());
 		SpringApplication.run(Auth0TechnicalExerciseApplication.class, args);
