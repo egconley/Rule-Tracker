@@ -21,8 +21,8 @@ public class APIConnection {
             // set request body content
             StringBuilder builder = new StringBuilder();
             // TODO: App User: hard code in client_id and client_secret values
-            builder.append("{\"client_id\":\"").append("5eYC3MTL7sfknKyxpJ4j9aC9i1hFlA2S")
-                    .append("\",\"client_secret\":\"").append("iCyTg-ipzHA7qW8SpG0AV4FLgnaCW5EFoEmk73WNHU7V5GzLU1w5TnHU_SRIItqD")
+            builder.append("{\"client_id\":\"").append("")
+                    .append("\",\"client_secret\":\"").append("")
                     .append("\",\"audience\":\"").append(audience)
                     .append("\",\"grant_type\":\"client_credentials\"}");
             String bodyContent = builder.toString();
