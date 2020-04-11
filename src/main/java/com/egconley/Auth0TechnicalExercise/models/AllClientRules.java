@@ -13,14 +13,18 @@ public class AllClientRules {
 
         for (String tenant : tenantNames) {
             HttpResponse<String> rulesResponse = APIConnection.getAPIData(new Tenant(tenant), "rules");
-            Rule[] rules = TenantRules.getTenantRules(rulesResponse);
-
             HttpResponse<String> clientsResponse = APIConnection.getAPIData(new Tenant(tenant), "clients");
-            Client[] clients = TenantClients.getTenantClients(clientsResponse);
-            HashMap<String, List<String>> rulesByTenantApp = TenantClientRules.getTenantClientRules(clients, rules);
-            rulesByApp.putAll(rulesByTenantApp);
-        }
 
+            if (clientsResponse.getStatus()==200 && rulesResponse.getStatus()==200) {
+                Rule[] rules = TenantRules.getTenantRules(rulesResponse);
+                Client[] clients = TenantClients.getTenantClients(clientsResponse);
+                HashMap<String, List<String>> rulesByTenantApp = TenantClientRules.getTenantClientRules(clients, rules);
+                rulesByApp.putAll(rulesByTenantApp);
+            } else {
+                System.out.println("Status: " + clientsResponse.getStatus() + " " + clientsResponse.getStatusText());
+                break;
+            }
+        }
         return rulesByApp;
     }
 }
