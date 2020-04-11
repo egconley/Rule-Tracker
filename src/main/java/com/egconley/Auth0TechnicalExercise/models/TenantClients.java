@@ -1,0 +1,14 @@
+package com.egconley.Auth0TechnicalExercise.models;
+
+import com.google.gson.Gson;
+import com.mashape.unirest.http.HttpResponse;
+
+public class TenantClients {
+
+    public static Client[] getTenantClients(HttpResponse<String> response) {
+
+        Client[] clients = new Gson().fromJson(response.getBody(), Client[].class);
+        System.out.println("!!!!!!!!!" + clients.toString());
+        return clients;
+    }
+}
