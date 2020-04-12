@@ -1,6 +1,9 @@
 
 # Created by https://www.gitignore.io/api/java,macos,android,androidstudio
 
+### Auth0 Config ###
+auth0.properties
+
 ### Android ###
 # Built application files
 *.apk

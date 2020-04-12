@@ -28,6 +28,10 @@ dependencies {
 	implementation 'com.google.guava:guava:28.0-jre'
 	implementation 'com.google.code.gson:gson:2.8.6'
 
+	// Auth0
+	compile 'org.springframework.boot:spring-boot-starter-web:1.5.+'
+	compile 'com.auth0:mvc-auth-commons:1.+'
+
 //	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 //	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'

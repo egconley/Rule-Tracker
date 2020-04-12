@@ -1,5 +1,6 @@
 package com.egconley.Auth0TechnicalExercise.ManagementAPI;
 
+import com.egconley.Auth0TechnicalExercise.AppConfig;
 import com.egconley.Auth0TechnicalExercise.models.Tenant;
 import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
@@ -16,13 +17,16 @@ public class APIConnection {
         String audience = tenantDomain + "/api/v2/";
         HttpResponse<String> apiResponse = null;
 
+        String client_id = AppConfig.getApiclientId();
+        String client_secret = AppConfig.getApiclientSecret();
+
         // Auth0 Management API Connection
         try {
             // set request body content
             StringBuilder builder = new StringBuilder();
-            // TODO: App User: hard code in client_id and client_secret values
-            builder.append("{\"client_id\":\"").append("")
-                    .append("\",\"client_secret\":\"").append("")
+            // TODO: App User: hard code in Management APIv2 client_id and client_secret
+            builder.append("{\"client_id\":\"").append(client_id)
+                    .append("\",\"client_secret\":\"").append(client_secret)
                     .append("\",\"audience\":\"").append(audience)
                     .append("\",\"grant_type\":\"client_credentials\"}");
             String bodyContent = builder.toString();
