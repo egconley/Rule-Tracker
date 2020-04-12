@@ -9,7 +9,6 @@ public class TenantRules {
 
         Rule[] rules = new Gson().fromJson(response.getBody(), Rule[].class);
 
-        System.out.println("!!!!!!!!!" + rules.toString());
         return rules;
     }
 }

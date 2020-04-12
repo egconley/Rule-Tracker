@@ -1,16 +1,9 @@
 package com.egconley.Auth0TechnicalExercise.ManagementAPI;
 
-import com.egconley.Auth0TechnicalExercise.AppConfig;
-import com.egconley.Auth0TechnicalExercise.models.Client;
-import com.egconley.Auth0TechnicalExercise.models.Rule;
 import com.egconley.Auth0TechnicalExercise.models.Tenant;
 import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
 
 public class APIConnection {
 
@@ -25,7 +18,6 @@ public class APIConnection {
         try {
             // set request body content
             StringBuilder builder = new StringBuilder();
-            // TODO: App User: hard code in Management APIv2 client_id and client_secret
             builder.append("{\"client_id\":\"").append(apiclientId)
                     .append("\",\"client_secret\":\"").append(apiclientSecret)
                     .append("\",\"audience\":\"").append(audience)

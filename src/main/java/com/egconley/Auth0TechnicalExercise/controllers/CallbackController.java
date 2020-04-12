@@ -1,4 +1,4 @@
-package com.egconley.Auth0TechnicalExercise;
+package com.egconley.Auth0TechnicalExercise.controllers;
 
 import com.auth0.IdentityVerificationException;
 import com.auth0.SessionUtils;

@@ -1,17 +1,12 @@
 package com.egconley.Auth0TechnicalExercise.models;
 
-import com.egconley.Auth0TechnicalExercise.AppConfig;
 import com.egconley.Auth0TechnicalExercise.ManagementAPI.APIConnection;
 import com.mashape.unirest.http.HttpResponse;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
 
-public class AllClientRules {
+public class AccountRules {
 
     public HashMap<String, List<String>>  getAllClientRules(List<String> tenantNames, String apiclientId, String apiclientSecret) {
         HashMap<String, List<String>> rulesByApp = new HashMap<>();
