@@ -1,24 +1,33 @@
 package com.egconley.Auth0TechnicalExercise.models;
 
+import com.egconley.Auth0TechnicalExercise.AppConfig;
 import com.egconley.Auth0TechnicalExercise.ManagementAPI.APIConnection;
 import com.mashape.unirest.http.HttpResponse;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class AllClientRules {
 
-    public static HashMap<String, List<String>>  getAllClientRules(List<String> tenantNames) {
+    public HashMap<String, List<String>>  getAllClientRules(List<String> tenantNames, String apiclientId, String apiclientSecret) {
         HashMap<String, List<String>> rulesByApp = new HashMap<>();
+        APIConnection connection = new APIConnection();
+        TenantRules tenantRules = new TenantRules();
+        TenantClients tenantClients = new TenantClients();
+        TenantClientRules tenantClientRules = new TenantClientRules();
 
         for (String tenant : tenantNames) {
-            HttpResponse<String> rulesResponse = APIConnection.getAPIData(new Tenant(tenant), "rules");
-            HttpResponse<String> clientsResponse = APIConnection.getAPIData(new Tenant(tenant), "clients");
+            HttpResponse<String> rulesResponse = connection.getAPIData(new Tenant(tenant), "rules", apiclientId, apiclientSecret);
+            HttpResponse<String> clientsResponse = connection.getAPIData(new Tenant(tenant), "clients", apiclientId, apiclientSecret);
 
             if (clientsResponse.getStatus()==200 && rulesResponse.getStatus()==200) {
-                Rule[] rules = TenantRules.getTenantRules(rulesResponse);
-                Client[] clients = TenantClients.getTenantClients(clientsResponse);
-                HashMap<String, List<String>> rulesByTenantApp = TenantClientRules.getTenantClientRules(clients, rules);
+                Rule[] rules = tenantRules.getTenantRules(rulesResponse);
+                Client[] clients = tenantClients.getTenantClients(clientsResponse);
+                HashMap<String, List<String>> rulesByTenantApp = tenantClientRules.getTenantClientRules(clients, rules);
                 rulesByApp.putAll(rulesByTenantApp);
             } else {
                 System.out.println("Status: " + clientsResponse.getStatus() + " " + clientsResponse.getStatusText());

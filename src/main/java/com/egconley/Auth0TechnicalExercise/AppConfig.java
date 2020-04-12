@@ -36,23 +36,11 @@ public class AppConfig {
     @Value(value = "${com.auth0.APIClientID}")
     private String apiclientId;
 
-    public static String apiclientId_STATIC;
-
-    public void setAPIClientID(String apiclientId) {
-        AppConfig.apiclientId_STATIC = apiclientId;
-    }
-
     /**
      * This is the client secret for the Management API/v2
      */
     @Value(value = "${com.auth0.APIClientSecret}")
     private String apiclientSecret;
-
-    public static String apiclientSecret_STATIC;
-
-    public void setAPIClientSecret(String apiclientSecret) {
-        AppConfig.apiclientSecret_STATIC = apiclientSecret;
-    }
 
     @Bean
     public FilterRegistrationBean filterRegistration() {
@@ -75,11 +63,11 @@ public class AppConfig {
         return clientSecret;
     }
 
-    public static String getApiclientId() {
-        return AppConfig.apiclientId_STATIC;
+    public String getApiclientId() {
+        return apiclientId;
     }
 
-    public static String getApiclientSecret() {
-        return AppConfig.apiclientSecret_STATIC;
+    public String getApiclientSecret() {
+        return apiclientSecret;
     }
 }

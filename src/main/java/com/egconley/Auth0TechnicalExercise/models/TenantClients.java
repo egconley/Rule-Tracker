@@ -5,7 +5,7 @@ import com.mashape.unirest.http.HttpResponse;
 
 public class TenantClients {
 
-    public static Client[] getTenantClients(HttpResponse<String> response) {
+    public Client[] getTenantClients(HttpResponse<String> response) {
 
         Client[] clients = new Gson().fromJson(response.getBody(), Client[].class);
         System.out.println("!!!!!!!!!" + clients.toString());
