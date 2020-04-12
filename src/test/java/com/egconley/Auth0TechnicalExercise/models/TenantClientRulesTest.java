@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TenantClientRulesTest {
 
+    TenantClientRules tenantClientRules;
     Client[] clients;
     String testScript1AppName;
     String testScript3ClientIDs;
@@ -19,6 +20,8 @@ class TenantClientRulesTest {
 
     @BeforeEach
     void setUp() {
+        tenantClientRules = new TenantClientRules();
+
         clients = new Client[]{new Client("mkrG83lsKIOadGrWTS6fXb3QXASUABSn", "test tenant", "Fruit Bot"),
                 new Client("KyFlLCELqa8flAt47exfXo5qz8GT99Rv", "test tenant", "Byte Vegetables"),
                 new Client("KLakvhTX67hRwXeAV7pBl3F8ZG4UD6tx", "test tenant", "Fruitprism"),
@@ -111,7 +114,7 @@ class TenantClientRulesTest {
         expected.put("Fruitprism", fruitprismExpected);
         expected.put("All Applications", allApplicationsExpected);
 
-        HashMap<String, List<String>> actual = TenantClientRules.getTenantClientRules(clients, rules);
+        HashMap<String, List<String>> actual = tenantClientRules.getTenantClientRules(clients, rules);
 
         assertEquals(expected, actual);
     }

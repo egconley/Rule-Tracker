@@ -1,10 +1,11 @@
-package com.egconley.Auth0TechnicalExercise;
+package com.egconley.Auth0TechnicalExercise.controllers;
 
 import com.auth0.AuthenticationController;
 import com.auth0.IdentityVerificationException;
 import com.auth0.Tokens;
 import com.auth0.jwk.JwkProvider;
 import com.auth0.jwk.JwkProviderBuilder;
+import com.egconley.Auth0TechnicalExercise.AppConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -5,3 +5,13 @@ body {
 h1 {
     color: #fff;
 }
+
+input.form-control.form-control-sm {
+    background-color: #343a40;
+    color: #fff;
+}
+
+select.custom-select.custom-select-sm.form-control.form-control-sm {
+    background-color: #343a40;
+    color: #fff;
+}

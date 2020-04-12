@@ -6,7 +6,7 @@ import java.util.*;
 
 public class RuleScriptScanner {
 
-    public static List<String> getAppNames(String script, Client[] clients) {
+    public List<String> getAppNames(String script, Client[] clients) {
 
         Stack<Character> quotes = new Stack<>();
 

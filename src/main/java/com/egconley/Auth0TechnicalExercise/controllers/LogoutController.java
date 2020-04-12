@@ -1,5 +1,6 @@
-package com.egconley.Auth0TechnicalExercise;
+package com.egconley.Auth0TechnicalExercise.controllers;
 
+import com.egconley.Auth0TechnicalExercise.AppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

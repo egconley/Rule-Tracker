@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RuleScriptScannerTest {
 
+    RuleScriptScanner scanner;
     String testScript1AppName;
     String testScript3ClientIDs;
     String testScriptNoAppReferences;
@@ -18,6 +19,7 @@ class RuleScriptScannerTest {
 
     @BeforeEach
     void setUp() {
+        scanner = new RuleScriptScanner();
         testScript1AppName = "function accessOnWeekdaysOnly(user, context, callback) {\n" +
                 "\n" +
                 "  if (context.clientName === 'Fruit Bot') {\n" +
@@ -84,7 +86,7 @@ class RuleScriptScannerTest {
 
     @Test
     public void getAppNames_test1AppName() {
-        List<String> actual = RuleScriptScanner.getAppNames(testScript1AppName, clients);
+        List<String> actual = scanner.getAppNames(testScript1AppName, clients);
         List<String> expected = new LinkedList<>();
         expected.add("Fruit Bot");
         assertEquals(expected, actual);
@@ -92,7 +94,7 @@ class RuleScriptScannerTest {
 
     @Test
     public void getAppNames_testScript3ClientIDs() {
-        List<String> actual = RuleScriptScanner.getAppNames(testScript3ClientIDs, clients);
+        List<String> actual = scanner.getAppNames(testScript3ClientIDs, clients);
         List<String> expected = new LinkedList<>();
         expected.add("Fruit Bot");
         expected.add("Byte Vegetables");
@@ -102,7 +104,7 @@ class RuleScriptScannerTest {
 
     @Test
     public void getAppNames_testScriptNoAppReferences() {
-        List<String> actual = RuleScriptScanner.getAppNames(testScriptNoAppReferences, clients);
+        List<String> actual = scanner.getAppNames(testScriptNoAppReferences, clients);
         List<String> expected = new LinkedList<>();
         assertEquals(expected, actual);
     }

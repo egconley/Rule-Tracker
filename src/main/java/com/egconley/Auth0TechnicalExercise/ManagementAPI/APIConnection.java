@@ -1,32 +1,25 @@
 package com.egconley.Auth0TechnicalExercise.ManagementAPI;
 
-import com.egconley.Auth0TechnicalExercise.AppConfig;
 import com.egconley.Auth0TechnicalExercise.models.Tenant;
 import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
-import org.springframework.stereotype.Component;
 
-@Component
 public class APIConnection {
 
-    public static HttpResponse<String> getAPIData(Tenant tenant, String endpoint) {
+    public HttpResponse<String> getAPIData(Tenant tenant, String endpoint, String apiclientId, String apiclientSecret) {
 
         String tenantDomain = tenant.getTenantDomain();
         AccessToken token;
         String audience = tenantDomain + "/api/v2/";
         HttpResponse<String> apiResponse = null;
 
-        String client_id = AppConfig.getApiclientId();
-        String client_secret = AppConfig.getApiclientSecret();
-
         // Auth0 Management API Connection
         try {
             // set request body content
             StringBuilder builder = new StringBuilder();
-            // TODO: App User: hard code in Management APIv2 client_id and client_secret
-            builder.append("{\"client_id\":\"").append(client_id)
-                    .append("\",\"client_secret\":\"").append(client_secret)
+            builder.append("{\"client_id\":\"").append(apiclientId)
+                    .append("\",\"client_secret\":\"").append(apiclientSecret)
                     .append("\",\"audience\":\"").append(audience)
                     .append("\",\"grant_type\":\"client_credentials\"}");
             String bodyContent = builder.toString();
