@@ -44,4 +44,5 @@ Web app that pulls a list of [Rules](https://auth0.com/docs/rules) associated wi
 8. Navigate to `Auth0TechnicalExerciseApplication.java` and click the green play button to run the app.
 9. In your browser, navigate to http://localhost:8080/ and sign in with a whitelisted email. You should be redirected to http://localhost:8080/portal/home.  It should like this [deployed demo](https://rule-tracker.herokuapp.com/), but populated with the data from your own tenant.
 
-### Demo Screenshots
+### Demo
+![](demo.png)
