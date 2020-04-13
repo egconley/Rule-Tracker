@@ -31,17 +31,17 @@ Web app that pulls a list of [Rules](https://auth0.com/docs/rules) associated wi
     - On `line 14` of the *Script*, add the desired whitelisted email addresses to the `whitelist` array.
 
 ### On your local machine
-3. Clone the Rule-Tracker repository to your local machine.
-4. Open the project in [IntelliJ](https://www.jetbrains.com/idea/).
-5. Add `auth0.properties` to your project `.gitignore`.
-6. In the `src/main/resources` folder, navigate to the `auth0.properties` file.  Replace the `xxxx` of each value with your own credentials.
+4. Clone the Rule-Tracker repository to your local machine.
+5. Open the project in [IntelliJ](https://www.jetbrains.com/idea/).
+6. Add `auth0.properties` to your project `.gitignore`.
+7. In the `src/main/resources` folder, navigate to the `auth0.properties` file.  Replace the `xxxx` of each value with your own credentials.
     - `com.auth0.domain: xxxxx.auth0.com`
     - `com.auth0.tenant: xxxxx`
     - `com.auth0.ruleTrackerClientId: xxxxx` *this value should be the **Client ID** from your new **Auth0 Rule Tracker** application*
     - `com.auth0.ruleTrackerClientSecret: xxxxx` *this value should be the **Client Secret** from your new **Auth0 Rule Tracker** application*
     - `com.auth0.APIClientID: xxxxx` *this value should be the **Client ID** from your new **API Explorer Application** application*
     - `com.auth0.APIClientSecret: xxxxx` *this value should be the **Client ID** from your new **API Explorer Application** application*
-6. Navigate to `Auth0TechnicalExerciseApplication.java` and click the green play button to run the app.
-7. In your browser, navigate to http://localhost:8080/ and sign in with a whitelisted email. You should be redirected to http://localhost:8080/portal/home.  It should like this [deployed demo](https://rule-tracker.herokuapp.com/), but populated with the data from your own tenant.
+8. Navigate to `Auth0TechnicalExerciseApplication.java` and click the green play button to run the app.
+9. In your browser, navigate to http://localhost:8080/ and sign in with a whitelisted email. You should be redirected to http://localhost:8080/portal/home.  It should like this [deployed demo](https://rule-tracker.herokuapp.com/), but populated with the data from your own tenant.
 
 ### Demo Screenshots
