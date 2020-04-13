@@ -25,7 +25,6 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
-    // TODO: (optional) add additional tenants
     @Value(value = "${com.auth0.tenant}")
     private String tenantName;
 
@@ -52,7 +51,6 @@ public class HomeController {
         }
 
         List<String> tenantNames = new LinkedList<>();
-        // TODO: (optional) add additional tenants
         tenantNames.add(tenantName);
         AccountRules rules = new AccountRules();
         HashMap<String, List<String>> rulesByApp = rules.getAllClientRules(tenantNames, apiclientId, apiclientSecret);

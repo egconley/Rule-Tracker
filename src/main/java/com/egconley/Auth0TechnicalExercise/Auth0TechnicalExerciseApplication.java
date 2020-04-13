@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Auth0TechnicalExerciseApplication {
 
 	public static void main(String[] args) {
-		// TODO: com.egconley.Auth0DSETechExercise.App User: add own tenant name
 		SpringApplication.run(Auth0TechnicalExerciseApplication.class, args);
 	}
 
