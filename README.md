@@ -1,7 +1,7 @@
 # Auth0-Rule-Tracker
 
 ## Description
-Web app that pulls a list of [Rules](https://auth0.com/docs/rules) associated with an [Auth0](https://auth0.com/) account and lists them by tenant application.
+Web app that pulls a list of [Rules](https://auth0.com/docs/rules) associated with an [Auth0](https://auth0.com/) tenant and lists them by application.
 
 ## Author
 [Ellen Conley](https://github.com/egconley)
