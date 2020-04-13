@@ -13,6 +13,8 @@ Web app that pulls a list of [Rules](https://auth0.com/docs/rules) associated wi
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Gradle](https://gradle.org/)
 - [gson](https://github.com/google/gson)
+- [Bootstrap](https://getbootstrap.com/)
+- [DataTables](https://datatables.net/)
 
 ## Resources
 - [Auth0 Java Spring MVC Tutorial](https://auth0.com/docs/quickstart/webapp/java-spring-mvc)
