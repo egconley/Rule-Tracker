@@ -8,21 +8,23 @@ import java.util.List;
 
 public class TenantClientRules {
 
-    public HashMap<String, List<String>>  getTenantClientRules(Client[] clients, Rule[] rules) {
+    public HashMap<String, List<String>>  getTenantClientRules(Client[] clients, Rule[] rules, Tenant tenant) {
 
         RuleScriptScanner scanner = new RuleScriptScanner();
         HashMap<String, List<String>> appRuleListMap = new HashMap<>();
         for (Client client : clients) {
             appRuleListMap.put(client.getName(), new LinkedList<String>());
         }
+        appRuleListMap.remove("All Applications");
+        appRuleListMap.put("All " + tenant.getTenant() + " Applications", new LinkedList<String>());
 
         for (Rule rule : rules) {
             List<String> appNames = scanner.getAppNames(rule.getScript(), clients);
             // if rule script doesn't include specific apps, assume it applies to all applications
             if (appNames.isEmpty()) {
-                List<String> appRules = appRuleListMap.get("All Applications");
+                List<String> appRules = appRuleListMap.get("All " + tenant.getTenant() + " Applications");
                 appRules.add(rule.getName());
-                appRuleListMap.put("All Applications", appRules);
+                appRuleListMap.put("All " + tenant.getTenant() + " Applications", appRules);
             } else {
                 // if rules script includes specific apps, file the rule under each of the apps named
                 for (String name : appNames) {

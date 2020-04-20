@@ -2,6 +2,7 @@ package com.egconley.Auth0TechnicalExercise.controllers;
 
 import com.auth0.SessionUtils;
 import com.egconley.Auth0TechnicalExercise.models.AccountRules;
+import com.egconley.Auth0TechnicalExercise.models.Tenant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,17 +26,23 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
-    @Value(value = "${com.auth0.tenant}")
-    private String tenantName;
+    @Value(value = "${com.auth0.tenant1}")
+    private String tenant1Name;
 
-    @Value(value = "${com.auth0.APIClientID}")
-    private String apiclientId;
+    @Value(value = "${com.auth0.tenant1.APIClientID}")
+    private String t1apiclientId;
 
-    /**
-     * This is the client secret for the Management API/v2
-     */
-    @Value(value = "${com.auth0.APIClientSecret}")
-    private String apiclientSecret;
+    @Value(value = "${com.auth0.tenant1.APIClientSecret}")
+    private String t1apiclientSecret;
+
+    @Value(value = "${com.auth0.tenant2}")
+    private String tenant2Name;
+
+    @Value(value = "${com.auth0.tenant2.APIClientID}")
+    private String t2apiclientId;
+
+    @Value(value = "${com.auth0.tenant2.APIClientSecret}")
+    private String t2apiclientSecret;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -50,10 +57,11 @@ public class HomeController {
             model.put("userId", idToken);
         }
 
-        List<String> tenantNames = new LinkedList<>();
-        tenantNames.add(tenantName);
+        List<Tenant> tenants = new LinkedList<>();
+        tenants.add(new Tenant(tenant1Name, t1apiclientId, t1apiclientSecret));
+        tenants.add(new Tenant(tenant2Name, t2apiclientId, t2apiclientSecret));
         AccountRules rules = new AccountRules();
-        HashMap<String, List<String>> rulesByApp = rules.getAllClientRules(tenantNames, apiclientId, apiclientSecret);
+        HashMap<String, List<String>> rulesByApp = rules.getAllClientRules(tenants);
         m.addAttribute("data", rulesByApp);
 
         return "table";

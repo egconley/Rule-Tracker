@@ -33,13 +33,13 @@ public class AppConfig {
     /**
      * This is the client id for the Management API/v2
      */
-    @Value(value = "${com.auth0.APIClientID}")
+    @Value(value = "${com.auth0.tenant1.APIClientID}")
     private String apiclientId;
 
     /**
      * This is the client secret for the Management API/v2
      */
-    @Value(value = "${com.auth0.APIClientSecret}")
+    @Value(value = "${com.auth0.tenant1.APIClientSecret}")
     private String apiclientSecret;
 
     @Bean

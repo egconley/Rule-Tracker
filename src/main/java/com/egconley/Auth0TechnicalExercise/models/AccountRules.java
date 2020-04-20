@@ -8,21 +8,21 @@ import java.util.List;
 
 public class AccountRules {
 
-    public HashMap<String, List<String>>  getAllClientRules(List<String> tenantNames, String apiclientId, String apiclientSecret) {
+    public HashMap<String, List<String>>  getAllClientRules(List<Tenant> tenants) {
         HashMap<String, List<String>> rulesByApp = new HashMap<>();
         APIConnection connection = new APIConnection();
         TenantRules tenantRules = new TenantRules();
         TenantClients tenantClients = new TenantClients();
         TenantClientRules tenantClientRules = new TenantClientRules();
 
-        for (String tenant : tenantNames) {
-            HttpResponse<String> rulesResponse = connection.getAPIData(new Tenant(tenant), "rules", apiclientId, apiclientSecret);
-            HttpResponse<String> clientsResponse = connection.getAPIData(new Tenant(tenant), "clients", apiclientId, apiclientSecret);
+        for (Tenant tenant : tenants) {
+            HttpResponse<String> rulesResponse = connection.getAPIData(tenant, "rules", tenant.getApiClientID(), tenant.getApiClientSecret());
+            HttpResponse<String> clientsResponse = connection.getAPIData(tenant, "clients", tenant.getApiClientID(), tenant.getApiClientSecret());
 
             if (clientsResponse.getStatus()==200 && rulesResponse.getStatus()==200) {
                 Rule[] rules = tenantRules.getTenantRules(rulesResponse);
                 Client[] clients = tenantClients.getTenantClients(clientsResponse);
-                HashMap<String, List<String>> rulesByTenantApp = tenantClientRules.getTenantClientRules(clients, rules);
+                HashMap<String, List<String>> rulesByTenantApp = tenantClientRules.getTenantClientRules(clients, rules, tenant);
                 rulesByApp.putAll(rulesByTenantApp);
             } else {
                 System.out.println("Status: " + clientsResponse.getStatus() + " " + clientsResponse.getStatusText());
